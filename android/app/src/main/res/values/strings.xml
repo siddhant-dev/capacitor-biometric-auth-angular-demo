@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Biometry Angular</string>
+    <string name="title_activity_main">Biometry Angular</string>
+    <string name="package_name">capacitor.biometric.angular.demo</string>
+    <string name="custom_url_scheme">capacitor.biometric.angular.demo</string>
+</resources>
