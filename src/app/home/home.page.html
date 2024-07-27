@@ -48,7 +48,6 @@
       <ion-list-header>Options</ion-list-header>
       <ng-container *ngIf="!isNative">
         <ion-item>
-<<<<<<< HEAD
           <ion-select
             [(ngModel)]="formModel.biometryType"
             name="biometryType"
@@ -63,12 +62,6 @@
               [value]="entry.type"
               color="primary"
             >
-=======
-          <ion-select [(ngModel)]="formModel.biometryType" name="biometryType" label="Biometry"
-            class="[--padding-start:0px] max-w-full" interface="action-sheet"
-            [interfaceOptions]="{ header: 'Select biometry type' }" (ionChange)="onSelectBiometry($event)">
-            <ion-select-option *ngFor="let entry of biometryTypes" [value]="entry.type">
->>>>>>> f10f7a49a3705b8441c29ce81b993615401911f5
               {{ entry.title }}
             </ion-select-option>
           </ion-select>
