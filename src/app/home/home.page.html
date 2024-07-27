@@ -2,9 +2,8 @@
   <ion-toolbar>
     <ion-title>Biometry</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="onAuthenticate()"
-        >Authenticate
-        <ion-icon slot="end" name="finger-print"></ion-icon>
+      <ion-button fill="clear" color="primary" (click)="onAuthenticate()">
+        Authenticate
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -67,6 +66,7 @@
             <ion-select-option
               *ngFor="let entry of biometryTypes"
               [value]="entry.type"
+              color="primary"
             >
               {{ entry.title }}
             </ion-select-option>
