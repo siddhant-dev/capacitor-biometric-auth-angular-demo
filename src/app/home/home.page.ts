@@ -234,10 +234,6 @@ export class HomePage implements OnInit, OnDestroy {
     this.updateBiometryInfo(await BiometricAuth.checkBiometry());
   }
 
-  onSetAndroidBiometryStrength(): void {
-    // The form value is used directly in onAuthenticate
-  }
-
   async onSetIsEnrolled(): Promise<void> {
     await BiometricAuth.setBiometryIsEnrolled(this.formModel.isEnrolled);
     this.updateBiometryInfo(await BiometricAuth.checkBiometry());
