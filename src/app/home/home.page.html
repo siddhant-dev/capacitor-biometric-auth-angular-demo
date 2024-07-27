@@ -2,14 +2,12 @@
   <ion-toolbar>
     <ion-title>Biometry</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="onAuthenticate()"
-        >Authenticate
+      <ion-button (click)="onAuthenticate()">Authenticate
         <ion-icon slot="end" name="finger-print"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
 <ion-content [scrollY]="true">
   <ion-list lines="full">
     <ion-item>
@@ -18,7 +16,6 @@
         <div [innerHTML]="biometryNames"></div>
       </ion-label>
     </ion-item>
-
     <ion-item>
       <ion-label>
         <ion-text class="block">Biometry available</ion-text>
@@ -28,7 +25,6 @@
       </ion-label>
       <ion-text slot="end"> {{ availableBiometry }} </ion-text>
     </ion-item>
-
     <ion-item>
       <ion-label>
         <ion-text class="block">Strong biometry available</ion-text>
@@ -40,7 +36,6 @@
         {{ biometry.strongBiometryIsAvailable ? 'Yes' : 'No' }}
       </ion-text>
     </ion-item>
-
     <ion-item>
       <ion-label>Device is secure</ion-label>
       <ion-text slot="end">
@@ -48,131 +43,68 @@
       </ion-text>
     </ion-item>
   </ion-list>
-
   <form #form="ngForm" class="mt-6">
     <ion-list lines="full">
       <ion-list-header>Options</ion-list-header>
-
       <ng-container *ngIf="!isNative">
         <ion-item>
-          <ion-select
-            [(ngModel)]="formModel.biometryType"
-            name="biometryType"
-            label="Biometry"
-            class="[--padding-start:0px] max-w-full"
-            interface="action-sheet"
-            [interfaceOptions]="{ header: 'Select biometry type' }"
-            (ionChange)="onSelectBiometry($event)"
-          >
-            <ion-select-option
-              *ngFor="let entry of biometryTypes"
-              [value]="entry.type"
-            >
+          <ion-select [(ngModel)]="formModel.biometryType" name="biometryType" label="Biometry"
+            class="[--padding-start:0px] max-w-full" interface="action-sheet"
+            [interfaceOptions]="{ header: 'Select biometry type' }" (ionChange)="onSelectBiometry($event)">
+            <ion-select-option *ngFor="let entry of biometryTypes" [value]="entry.type">
               {{ entry.title }}
             </ion-select-option>
           </ion-select>
         </ion-item>
-
         <ion-item>
-          <ion-checkbox
-            [(ngModel)]="formModel.isEnrolled"
-            name="isEnrolled"
-            [disabled]="biometry.biometryType === BiometryType.none"
-            (ionChange)="onSetIsEnrolled()"
-          >
+          <ion-checkbox [(ngModel)]="formModel.isEnrolled" name="isEnrolled"
+            [disabled]="biometry.biometryType === BiometryType.none" (ionChange)="onSetIsEnrolled()">
             Enrolled
           </ion-checkbox>
         </ion-item>
-
         <ion-item>
-          <ion-checkbox
-            [(ngModel)]="formModel.deviceIsSecure"
-            name="deviceIsSecure"
-            (ionChange)="onSetDeviceIsSecure()"
-          >
+          <ion-checkbox [(ngModel)]="formModel.deviceIsSecure" name="deviceIsSecure"
+            (ionChange)="onSetDeviceIsSecure()">
             Device is secure
           </ion-checkbox>
         </ion-item>
       </ng-container>
-
       <ion-item *ngIf="isAndroid">
-        <ion-checkbox
-          [(ngModel)]="formModel.onlyUseStrongBiometry"
-          name="onlyUseStrongBiometry"
-          (ionChange)="onSetAndroidBiometryStrength()"
-        >
+        <ion-checkbox [(ngModel)]="formModel.onlyUseStrongBiometry" name="onlyUseStrongBiometry">
           Only use strong biometry
         </ion-checkbox>
       </ion-item>
-
       <ion-item>
-        <ion-checkbox
-          [(ngModel)]="formModel.allowDeviceCredential"
-          name="allowDeviceCredential"
-        >
+        <ion-checkbox [(ngModel)]="formModel.allowDeviceCredential" name="allowDeviceCredential">
           Allow device credential
         </ion-checkbox>
       </ion-item>
-
       <ion-item *ngIf="isAndroid">
-        <ion-checkbox
-          [(ngModel)]="formModel.androidConfirmationRequired"
-          name="androidConfirmationRequired"
-        >
+        <ion-checkbox [(ngModel)]="formModel.androidConfirmationRequired" name="androidConfirmationRequired">
           Require confirmation
         </ion-checkbox>
       </ion-item>
-
       <ng-container *ngIf="isAndroid">
         <ion-item>
-          <ion-input
-            [(ngModel)]="formModel.androidTitle"
-            name="androidTitle"
-            label="Title:"
-            type="text"
-            autocapitalize="sentences"
-          ></ion-input>
+          <ion-input [(ngModel)]="formModel.androidTitle" name="androidTitle" label="Title:" type="text"
+            autocapitalize="sentences"></ion-input>
         </ion-item>
-
         <ion-item>
-          <ion-input
-            [(ngModel)]="formModel.androidSubtitle"
-            name="androidSubtitle"
-            label="Subtitle:"
-            type="text"
-            autocapitalize="sentences"
-          ></ion-input>
+          <ion-input [(ngModel)]="formModel.androidSubtitle" name="androidSubtitle" label="Subtitle:" type="text"
+            autocapitalize="sentences"></ion-input>
         </ion-item>
       </ng-container>
-
       <ion-item>
-        <ion-input
-          [(ngModel)]="formModel.reason"
-          name="reason"
-          label="Reason:"
-          type="text"
-          autocapitalize="sentences"
-        ></ion-input>
+        <ion-input [(ngModel)]="formModel.reason" name="reason" label="Reason:" type="text"
+          autocapitalize="sentences"></ion-input>
       </ion-item>
-
       <ion-item *ngIf="isNative">
-        <ion-input
-          [(ngModel)]="formModel.cancelTitle"
-          name="cancelTitle"
-          label="Cancel title:"
-          type="text"
-          autocapitalize="sentences"
-        ></ion-input>
+        <ion-input [(ngModel)]="formModel.cancelTitle" name="cancelTitle" label="Cancel title:" type="text"
+          autocapitalize="sentences"></ion-input>
       </ion-item>
-
       <ion-item *ngIf="isIOS">
-        <ion-input
-          [(ngModel)]="formModel.iosFallbackTitle"
-          name="iosFallbackTitle"
-          label="Fallback title:"
-          type="text"
-          autocapitalize="sentences"
-        ></ion-input>
+        <ion-input [(ngModel)]="formModel.iosFallbackTitle" name="iosFallbackTitle" label="Fallback title:" type="text"
+          autocapitalize="sentences"></ion-input>
       </ion-item>
     </ion-list>
   </form>
