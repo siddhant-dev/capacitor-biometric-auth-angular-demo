@@ -6,7 +6,7 @@ This [Ionic 8](https://ionicframework.com) application provides a demo of all of
 
 Big thanks to [Aparajita Fishman](https://github.com/aparajita) for this amazing library.
 
-This project uses Angular v18 Ionic v8 and Capacitor v6. (The latest and greatest 😅).
+This project uses Angular v18 Ionic v8 and Capacitor v7. (The latest and greatest 😅).
 
 This is a demo project for Ionic Angular Developers based on original demo [Demo](https://github.com/aparajita/capacitor-biometric-auth-demo).
 
